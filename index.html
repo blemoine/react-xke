@@ -63,41 +63,107 @@
 
 				<section>
 					<h2>React marche sur IE 8 et sur mobile</h2>
-					Perf et non polyfill :)
+					<ul>
+						<li class="fragment">N'est pas un polyfill</li>
+						<li class="fragment">Performances très élévées</li>
+					</ul>
+					
 				</section>
 
 				<section>
 					<h2>React utilise JSX</h2>
-					Exemple de JSX : XML et ES6
+					<pre><code>
+var arr = [1,2,3,4];						
+var component = (
+&lt;ul&gt;
+   &lt;li&gt;0&lt;/li&gt;
+   {arr.map( val => &lt;li&gt;{val}&lt;/li&gt;)}
+&lt;/ul&gt;
+);
+					</code></pre>
+					
 				</section>
 
 				<section>
+					<section>
 					<h2>Exemple</h2>
-					UN composant simple
+					<pre><code>
+var HelloMessage = React.createClass({
+  render: function() {
+    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+  }
+});
+
+React.render(&lt;HelloMessage name="World" /&gt;, 
+                document.getElementById('monId'));
+					</code></pre>
+					</section>
+					<section>
+						<h2>Sans JSX</h2>
+						<pre><code>
+var HelloMessage = React.createClass({
+  displayName: "HelloMessage",
+  render: function() {
+    return React.createElement("div", null, "Hello ", this.props.name);
+  }
+});
+
+React.render(React.createElement(HelloMessage, {name: "World"}), 
+              document.getElementById('monId'));
+						</code></pre>
+					</section>
 				</section>
 
 				<section>
 					<h2>Le cycle de vie d'un composant</h2>
-					Les étapes
+					<ul>
+						<li>componentWillMount</li>						
+						<li>componentDidMount</li>
+						<li>componentWillUpdate</li>
+						<li>componentDidUpdate</li>
+						<li>componentWillUnmount</li>
+					</ul>
 				</section>
 
 				<section>
 					<h2>State</h2>
-					Ou le mettre ?
-					Un exemple ?
+					<pre><code>var Timer = React.createClass({
+  getInitialState: function() {
+    return {secondsElapsed: 0};
+  },
+  tick: function() {
+    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+  },
+  componentDidMount: function() {
+    this.interval = setInterval(this.tick, 1000);
+  },
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
+  },
+  render: function() {
+    return &lt;div&gt;Seconds: {this.state.secondsElapsed}&lt;/div&gt;
+  }
+});
+					</code></pre>					
 				</section>
 
 				<section>
 					<h2>Props</h2>
-					Exemple avec validation
+					<pre><code>
+var HelloMessage = React.createClass({
+  propTypes: {
+       name: React.PropTypes.string.isRequired
+  },
+  render: function() {
+    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+  }
+});
+
+React.render(&lt;HelloMessage name="World" /&gt;, 
+                document.getElementById('monId'));
+					</code></pre>
 				</section>
 
-				<section>
-					<h2>State vs Props</h2>
-					L'état est modifiable de l'intérieur
-					Les props sont la configuration venant de l'extérieur
-
-				</section>
 
 				<section>
 					<h2>Isomorphic React</h2>
