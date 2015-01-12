@@ -30,6 +30,12 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+		<style>
+		pre.small-code {
+			font-size:0.36em;
+		}
+		</style>
 	</head>
 
 	<body>
@@ -47,18 +53,27 @@
 				</section>
 
 				<section>
-					<h2>React n'est pas un framework MVC</h2>			
-					TODO Logo Angular bakbone et Ember barré		
+					<h2>React n'est pas un framework MVC</h2>		
 				</section>
 
 				<section>
 					<h2>React est orienté composant</h2>
-					Partage du composant, WebComponent
+					 <aside class="notes">
+					 	<ul>
+					 		<li>Les composants sont réutilisables</li>
+					 		<li>Ce ne sont pas de webcomponent</li>
+					 	</ul>
+					 </aside>					
 				</section>
 
 				<section>
 					<h2>React encourage l'immutabilité</h2>
-					Utilisation de virtualDOM et flux unideirectionnel
+					<aside class="notes">
+						<ul>
+							<li>Flux unidirectionnel</li>
+							<li>Utilisation du virtualDOM pour les diff</li>
+						</ul>
+					</aside>					
 				</section>
 
 				<section>
@@ -73,11 +88,11 @@
 				<section>
 					<h2>React utilise JSX</h2>
 					<pre><code>
-var arr = [1,2,3,4];						
+var array = [1,2,3,4];						
 var component = (
 &lt;ul&gt;
    &lt;li&gt;0&lt;/li&gt;
-   {arr.map( val => &lt;li&gt;{val}&lt;/li&gt;)}
+   {array.map( val => &lt;li&gt;{val}&lt;/li&gt;)}
 &lt;/ul&gt;
 );
 					</code></pre>
@@ -125,6 +140,16 @@ React.render(React.createElement(HelloMessage, {name: "World"}),
 					</ul>
 				</section>
 
+
+				<section>
+					<h2>Modifier l'état</h2>
+					<ul>
+						<li>setState</li>
+						<li>replaceState</li>
+						<li>forceUpdate</li>
+					</ul>					
+				</section>
+
 				<section>
 					<h2>State</h2>
 					<pre><code>var Timer = React.createClass({
@@ -164,10 +189,50 @@ React.render(&lt;HelloMessage name="World" /&gt;,
 					</code></pre>
 				</section>
 
+				<section>
+					<h2>Sans databinding je suis perdu</h2>
+					<pre><code>
+var InputComponent =  React.createClass({
+  getInitialState: function() {
+    return {value: 'Hello!'};
+  },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
+  render: function() {
+    var value = this.state.value;
+    return &lt;input type="text" 
+                     value={value} 
+                     onChange={this.handleChange} /&gt;;
+  }
+})						
+					</code></pre>
+				</section>
+
 
 				<section>
 					<h2>Isomorphic React</h2>
-					Le principe (browserify, 2 méthodes pour rendre els coposants)
+					<pre><code>var React = require('react');
+
+var HelloMessage = React.createClass({
+  render: function() {
+    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+  }
+});
+
+module.exports = HelloMessage;						
+					</code></pre>
+
+					<pre><code>
+//Renvoie une chaine de caractère représentant le composant						
+React.renderComponentToString(HelloMessage({name: "World"}));
+
+// Rend le composant en l'attachant à "mountNode"
+React.renderComponent(<HelloMessage name="world" />, mountNode);
+					</code></pre>
+					<aside class="notes">
+						Browserify
+					</aside>
 				</section>
 
 				<section>
@@ -180,17 +245,109 @@ React.render(&lt;HelloMessage name="World" /&gt;,
 
 				<section>
 					<h2>Flux est une architecture</h2>
-					PAS UN FRAMEWORK
+					<ul>
+						<li>Pas un framework</li>
+						<li>Pas une librairie<sup>*</sup></li>
+					</ul>
 				</section>
 
 				<section>
 					<h2>L'architecture</h2>
-					UN JOLI dessin
-					Le dispatcher, les stores
+					<img src="images/flux.png" />					
 				</section>
 
 				<section>
-					<h2>Exemple</h2>
+						<section>
+					<h2>Exemple - Constante</h2>
+					<pre><code>
+module.exports = {
+  TODO_CREATE: 'TODO_CREATE'
+};
+					</code></pre>
+					</section>
+
+					<section>
+					<h2>Exemple - Dispatcher</h2>
+					<pre><code>
+var Dispatcher = require('flux').Dispatcher;
+
+module.exports = new Dispatcher();
+					</code></pre>
+					</section>
+
+					<section>
+					<h2>Exemple - Action</h2>
+					<pre><code>
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var TodoConstants = require('../constants/TodoConstants');
+
+var TodoActions = {
+
+  create: function(text) {
+    AppDispatcher.dispatch({
+      actionType: TodoConstants.TODO_CREATE,
+      text: text
+    });
+  }
+
+};
+
+module.exports = TodoActions;
+					</code></pre>
+					</section>
+
+						<section>
+					<h2>Exemple - Store</h2>
+					<pre class="small-code"><code>var EventEmitter = require('events').EventEmitter;
+var CHANGE_EVENT = 'change';
+var _todos = {};
+
+function create(text) {
+  var id = (Math.floor(Math.random() * 999999)).toString(36);
+  _todos[id] = {id: id, text: text };
+}
+
+var TodoStore = _.assign({}, EventEmitter.prototype, {
+  getAll: function() { return _todos; },
+  emitChange: function() { this.emit(CHANGE_EVENT); },
+  addChangeListener: function(callback) { this.on(CHANGE_EVENT, callback); },
+  removeChangeListener: function(callback) { this.removeListener(CHANGE_EVENT, callback); }
+});
+
+AppDispatcher.register(function(action) {
+  switch(action.actionType) {
+    case TodoConstants.TODO_CREATE:
+      create(action.text.trim());      
+      TodoStore.emitChange();
+      break;
+    default: //no-op
+  }
+});
+module.exports = TodoStore;
+					</code></pre>
+					</section>
+
+					<section>
+					<h2>Exemple - Composant</h2>
+					<pre><code>function getTodoState() {
+  return { allTodos: TodoStore.getAll() };
+}
+
+var TodoApp = React.createClass({
+  getInitialState: function() { return getTodoState(); },
+  componentDidMount: function() {
+    TodoStore.addChangeListener(this._onChange);
+  },
+  componentWillUnmount: function() {
+    TodoStore.removeChangeListener(this._onChange);
+  },
+  render: function() { return <div> </div>; },
+  _onChange: function() { this.setState(getTodoState()); }
+});
+
+module.exports = TodoApp;
+					</code></pre>
+					</section>
 				</section>
 
 				<section>
@@ -202,21 +359,44 @@ React.render(&lt;HelloMessage name="World" /&gt;,
 				</section>
 
 				<section>
-					<h2>Les limites de React</h2>
-					Partage d'état, verbosité, routing
+					<h2>Flow</h2>
+					<aside class="notes">
+						<ul>
+							<li>Ecrit en OCaml</li>
+							<li>Lent</li>							
+						</ul>
+					</aside>									
+				</section>
 
+				<section>
+					<h2>Les limites de React</h2>
+					<ul>
+						<li>Le partage d'état entre composant</li>
+						<li>La verbosité</li>
+						<li>N'est pas un framework...</li>
+					</ul>
 				</section>
 
 				<section>
 					<h2>Les limites de Flux</h2>
-					Le dispatcher unique, la dépendance entre store
-					Reflux
+					<ul>
+						<li>Le dispatcher uniquer</li>
+						<li>Les dépendances entre store</li>
+
+					</ul>
+					<aside class="notes">
+						Reflux
+					</aside>
 				</section>
 
 
 				<section>
 					<h2>L'avenir</h2>
-					le CSS en JS ? Flow en JS 
+					<ul>
+						<li>Composant autonome avec le CSS en JS</li>
+						<li>Compilateur Flow en JS</li>
+					</ul>
+					
 				</section>
 				
 
