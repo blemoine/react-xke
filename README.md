@@ -13,7 +13,7 @@ Démarrer le hand's on
 Mon premier composant - Le header
 ---------------------------------
 
-  * Créer un composant *Header* simple qui contiendra le markup
+  Créer un composant *Header* simple qui contiendra le markup
     ```
     <header>
         <h1>GHM</h1>    
@@ -23,6 +23,39 @@ Mon premier composant - Le header
     
     et qui devra être attaché à l'élemnt d'id *react*
     
-  * TODO
+Mon deuxième composant - Affichage d'une liste
+----------------------------------------------
 
-
+  Créer un composant *Bars* affichant la liste des bars renvoyées par le serveur à l'adresse http://localhost:3000/bars
+  
+  La liste des bars doit faire parti de l'état du composant.
+  Pour rappel, on pourra utiliser jquery de la façon suivante pour récupérer la liste des bars :
+     ```
+     $.getJSON('/bars').then(function (response) {
+         var bars = response.bars;
+     })
+     ```
+  Le markup attendu doit avoir la forme suivante :
+  ```
+  <div className="left-part">
+      <div>
+            <!-- Repetition commence ici -->
+           <div className="hoverable">
+                  <div className="bar-name-col">
+                      <span>BAR 1</span>
+                  </div>
+           </div>
+           <div className="hoverable">
+                 <div className="bar-name-col">
+                     <span>BAR 2</span>
+                 </div>
+          </div>
+          <div className="hoverable">
+                <div className="bar-name-col">
+                    <span>BAR 3</span>
+                </div>
+         </div>
+           <!-- Repetition fini ici -->
+      </div>
+  </div>
+  ```

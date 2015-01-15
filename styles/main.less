@@ -9,7 +9,7 @@ header {
     font-size: 3em;
     padding: 10px 20px;
     &:after {
-      content:' - Glory Hole Manager'
+      content: ' - Glory Hole Manager'
     }
   }
 
@@ -18,8 +18,45 @@ header {
     padding: 10px 20px;
     color: pink;
     &:after {
-      content:'Ne finissez plus seul derrière le mur'
+      content: 'Ne finissez plus seul derrière le mur'
     }
   }
 
+}
+
+.left-part {
+  float: left;
+  width: 60%;
+}
+
+.col {
+  display: inline-block;
+  width: 25%;
+  border: 1px solid black;
+  height: 30px;
+  vertical-align: top;
+  text-align: center;
+  box-sizing: border-box;
+
+  span {
+    display: inline-block;
+    padding: 6px 5px;
+  }
+}
+
+.bar-name-col {
+  .col;
+  width: 50%;
+  text-align: right;
+}
+
+.hoverable {
+  .col, .bar-name-col {
+    transition: 0.3s;
+  }
+
+  &:hover .col, &:hover .bar-name-col {
+    background-color: deeppink;
+    color: white;
+  }
 }

@@ -1,12 +1,6 @@
 var React = require('react');
 
-var Header = React.createClass({
-    render: function () {
-        return <header>
-            <h1>GHM</h1>
-            <h2></h2>
-        </header>
-    }
-});
+var Header = require('./components/Header.jsx');
+var Bars = require('./components/Bars.jsx');
 
-React.render(<Header />, document.getElementById('react'));
+React.render(<div><Header /><Bars /></div>, document.getElementById('react'));

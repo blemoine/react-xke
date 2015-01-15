@@ -23,14 +23,14 @@ app.get('/js/bundle.js', browserify('./scripts/app.jsx', {
 }));
 
 var bars = [
-    {name: 'Café Chic', consumer: {name: "johnson"}, productor: null},
-    {name: 'Red Light', consumer: null, productor: {name: "callaghan"}},
-    {name: 'Le Network', consumer: null, productor: null},
-    {name: 'PM you !', consumer: {name: "Robert"}, productor: {name: "DADADA"}},
-    {name: 'Chez Hortense', consumer: null, productor: null},
-    {name: 'Le freedom', consumer: null, productor: null},
-    {name: "Murphy's house", consumer: null, productor: null},
-    {name: "la grande salle du 7ème", consumer: null, productor: null}
+    {id: 1, name: 'Café Chic', consumer: {name: "johnson"}, productor: null},
+    {id: 2, name: 'Red Light', consumer: null, productor: {name: "callaghan"}},
+    {id: 3, name: 'Le Network', consumer: null, productor: null},
+    {id: 4, name: 'PM you !', consumer: {name: "Robert"}, productor: {name: "DADADA"}},
+    {id: 5, name: 'Chez Hortense', consumer: null, productor: null},
+    {id: 6, name: 'Le freedom', consumer: null, productor: null},
+    {id: 7, name: "Murphy's house", consumer: null, productor: null},
+    {id: 8, name: "la grande salle du 7ème", consumer: null, productor: null}
 ];
 
 app.get('/bars', function (req, res) {
