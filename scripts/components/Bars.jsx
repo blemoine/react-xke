@@ -1,16 +1,26 @@
 var React = require('react');
-var $ = require('jquery');
+
 var Bar = require('./Bar.jsx');
+
+var BarStore = require('../stores/BarStore.js');
 
 var Bars = React.createClass({
     getInitialState: function () {
         return {
-            bars: []
+            bars: BarStore.getAll()
         }
     },
     componentDidMount: function () {
-        $.getJSON('/bars').then((response) =>this.setState({bars: response.bars}));
+        BarStore.on('change',this._reloadState);
     },
+    componentWillUnmount: function () {
+        BarStore.removeListener('change', this._reloadState);
+    },
+
+    _reloadState: function() {
+        this.setState({bars: BarStore.getAll()})
+    },
+
     render: function () {
         return <div className="left-part">
             <div>

@@ -63,7 +63,7 @@ Mon deuxième composant - Affichage d'une liste
 Mon deuxième composant ++ - Etat d'occupation des salles
 --------------------------------------------------------
 
-  Créer un composant *Bar* affichant l'état d'occupation d'un bar qui remplacera le bloc ```hoverable``` par le markup
+  Créer un composant Bar* affichant l'état d'occupation d'un bar qui remplacera le bloc ```hoverable``` par le markup
   ```
   <div class="hoverable">
       <div class="bar-name-col">
@@ -79,6 +79,26 @@ Mon deuxième composant ++ - Etat d'occupation des salles
       </div>
   </div>
   ```
+
+Flux - Le BarStore
+------------------
+
+   Externaliser le chargement des bars dans un *BarStore* dédié.
+   Vous pouvez utiliser :
+     
+     * [l'eventEmitter](http://nodejs.org/api/events.html) de node (```var EventEmitter = require('events').EventEmitter;```)
+     * ```_.assign``` de lodash pour "étendre" l'eventEmitter 
+   
+   
+   
+   Le principe d'utilisation du store est :
+     
+     1. Initialiser la liste des bars dans le store à vide
+     2. Le composant *Bars* écoute les changement de *BarStore* et met à jour son état
+     3. l'appel JSON dans le store modifie la liste des bars et emet un evénement de changement
+     4. N'oubliez pas de retirer l'écouteur à la destruction du composant
+     
+
   
   
   
