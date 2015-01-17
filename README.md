@@ -146,6 +146,11 @@ Flux - Modification en utilisant le store
         ```updateBar``` qui prend en paramètre un bar, et notifie le dispatcher que l'on modifie ce bar.
       
 ### Ecoute des actions par le store
+
+    Le store doit écouter le dispatcher pour modifier sa liste de bars. 
+    Une fois la liste de bars modifié, le store emet un évenement de changement sur lui-même.
+    Attention ; essayez dans le mesure du possible de continuer de traiter les bars comme étant des objets immutables.
+
 ### Ajout d'un bouton valider permettant d'enregistrer la modif
   
   
