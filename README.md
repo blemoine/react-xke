@@ -139,6 +139,12 @@ Flux - Modification en utilisant le store
     On pourra utiliser celui fournit par le package *flux*
 
 ### Créer une action
+
+    La notification du dispatcher se fait par l'intermédiaire d'objet specifique action.
+    Ici, on crééra *BarAction* contenant 1 fonction :
+    
+        ```updateBar``` qui prend en paramètre un bar, et notifie le dispatcher que l'on modifie ce bar.
+      
 ### Ecoute des actions par le store
 ### Ajout d'un bouton valider permettant d'enregistrer la modif
   
