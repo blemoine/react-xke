@@ -86,8 +86,8 @@ Flux - Affichage depuis un store
    Externaliser le chargement des bars dans un *BarStore* dédié.
    Vous pouvez utiliser :
      
-     * [l'eventEmitter](http://nodejs.org/api/events.html) de node (```var EventEmitter = require('events').EventEmitter;```)
-     * ```_.assign``` de lodash pour "étendre" l'eventEmitter 
+   * [l'eventEmitter](http://nodejs.org/api/events.html) de node (```var EventEmitter = require('events').EventEmitter;```)
+   * ```_.assign``` de lodash pour "étendre" l'eventEmitter 
    
    
    
@@ -111,7 +111,7 @@ Flux - Modification en utilisant le store
     </form>
     ```
     
-    et intégrer ce composant dans le composant *Bars* en l'entourant de
+   et intégrer ce composant dans le composant *Bars* en l'entourant de
     ```
     <div class="right-part">
         <!-- ici votre composnt -->
@@ -127,39 +127,39 @@ Flux - Modification en utilisant le store
    
    Hints : 
     
-    * vous pouvez passer 2 fonctions en *props* du composant Bar, l'une permettant de modifier le producer, l'autre le consumer
-    * vous ne devez jamais modifier un état ou une property "par référence"
-    * vous pouvez utiliser un attribut d'état supplémentaire dans *Bars* 
+* vous pouvez passer 2 fonctions en *props* du composant Bar, l'une permettant de modifier le producer, l'autre le consumer
+* vous ne devez jamais modifier un état ou une property "par référence"
+* vous pouvez utiliser un attribut d'état supplémentaire dans *Bars* 
 
 ### Créer un dispatcher
 
-    Pour pouvoir notifier le store que l'on souhaite modifier l'occupation des bars, il va etre nécessaire de créer un *Dispatcher*
-    Il n'y en a qu'un par application.
-    
-    On pourra utiliser celui fournit par le package *flux*
+Pour pouvoir notifier le store que l'on souhaite modifier l'occupation des bars, il va etre nécessaire de créer un *Dispatcher*
+Il n'y en a qu'un par application.
+
+On pourra utiliser celui fournit par le package *flux*
 
 ### Créer une action
 
-    La notification du dispatcher se fait par l'intermédiaire d'objet specifique action.
-    Ici, on crééra *BarAction* contenant 1 fonction :
-    
-        ```updateBar``` qui prend en paramètre un bar, et notifie le dispatcher que l'on modifie ce bar.
+La notification du dispatcher se fait par l'intermédiaire d'objet specifique action.
+Ici, on crééra *BarAction* contenant 1 fonction :
+
+```updateBar``` qui prend en paramètre un bar, et notifie le dispatcher que l'on modifie ce bar.
       
 ### Ecoute des actions par le store
 
-    Le store doit écouter le dispatcher pour modifier sa liste de bars. 
-    Une fois la liste de bars modifié, le store emet un évenement de changement sur lui-même.
-    Attention ; essayez dans le mesure du possible de continuer de traiter les bars comme étant des objets immutables.
+Le store doit écouter le dispatcher pour modifier sa liste de bars. 
+Une fois la liste de bars modifié, le store emet un évenement de changement sur lui-même.
+Attention ; essayez dans le mesure du possible de continuer de traiter les bars comme étant des objets immutables.
 
 ### Enregistrer la modif depuis le composant
 
-    Ajouter un comportement ```onSubmit``` sur le formulaire de façon à pouvoir enregistrer les modifications.
-    Pour récupérer la valeur de l'input, vous pouvez utiliser le [databinding](http://facebook.github.io/react/docs/two-way-binding-helpers.html)
-    Pour initialiser l'état, vous pouvez utiliser ```componentWillReceiveProps```
-    Vous pouvez passer la fonctions d'enregistrement en *props* de PseudoForm.
-    Pour savoir quel est le nom que l'on change, il faut stocker une information supplémentaire dans l'état de *Bars*
-    Pensez à continuer de traiter les bars comme s'ils étaient immutables : vous pouvez cloner un bar en utlisant ```_.clone``` de lodash
-    
+Ajouter un comportement ```onSubmit``` sur le formulaire de façon à pouvoir enregistrer les modifications.
+Pour récupérer la valeur de l'input, vous pouvez utiliser le [databinding](http://facebook.github.io/react/docs/two-way-binding-helpers.html)
+Pour initialiser l'état, vous pouvez utiliser ```componentWillReceiveProps```
+Vous pouvez passer la fonctions d'enregistrement en *props* de PseudoForm.
+Pour savoir quel est le nom que l'on change, il faut stocker une information supplémentaire dans l'état de *Bars*
+Pensez à continuer de traiter les bars comme s'ils étaient immutables : vous pouvez cloner un bar en utlisant ```_.clone``` de lodash
+
   
   
   
