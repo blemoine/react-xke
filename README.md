@@ -151,7 +151,15 @@ Flux - Modification en utilisant le store
     Une fois la liste de bars modifié, le store emet un évenement de changement sur lui-même.
     Attention ; essayez dans le mesure du possible de continuer de traiter les bars comme étant des objets immutables.
 
-### Ajout d'un bouton valider permettant d'enregistrer la modif
+### Enregistrer la modif depuis le composant
+
+    Ajouter un comportement ```onSubmit``` sur le formulaire de façon à pouvoir enregistrer les modifications.
+    Pour récupérer la valeur de l'input, vous pouvez utiliser le [databinding](http://facebook.github.io/react/docs/two-way-binding-helpers.html)
+    Pour initialiser l'état, vous pouvez utiliser ```componentWillReceiveProps```
+    Vous pouvez passer la fonctions d'enregistrement en *props* de PseudoForm.
+    Pour savoir quel est le nom que l'on change, il faut stocker une information supplémentaire dans l'état de *Bars*
+    Pensez à continuer de traiter les bars comme s'ils étaient immutables : vous pouvez cloner un bar en utlisant ```_.clone``` de lodash
+    
   
   
   

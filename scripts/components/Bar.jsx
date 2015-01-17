@@ -11,11 +11,17 @@ var Bar = React.createClass({
         changeProducer: React.PropTypes.func.isRequired,
         changeConsumer: React.PropTypes.func.isRequired
     },
+
+    getInitialState:function() {
+        return {
+            propertySelected:null
+        }
+    },
     _changeProducer: function () {
-        this.props.changeProducer(this.props.bar.producer);
+        this.props.changeProducer(this.props.bar);
     },
     _changeConsumer: function () {
-        this.props.changeConsumer(this.props.bar.consumer);
+        this.props.changeConsumer(this.props.bar);
     },
 
     render: function () {
