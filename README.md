@@ -13,7 +13,7 @@ Démarrer le hand's on
 Mon premier composant - Le header
 ---------------------------------
 
-  Créer un composant *Header* simple qui contiendra le markup
+  Créer un composant `Header` simple qui contiendra le markup
   ```
   <header>
         <h1>GHM</h1>    
@@ -26,7 +26,7 @@ Mon premier composant - Le header
 Mon deuxième composant - Affichage d'une liste
 ----------------------------------------------
 
-  Créer un composant *Bars* affichant la liste des bars renvoyées par le serveur à l'adresse http://localhost:3000/bars
+  Créer un composant `Bars` affichant la liste des bars renvoyées par le serveur à l'adresse http://localhost:3000/bars
   
   La liste des bars doit faire parti de l'état du composant.
   Pour rappel, on pourra utiliser jquery de la façon suivante pour récupérer la liste des bars :
@@ -63,7 +63,7 @@ Mon deuxième composant - Affichage d'une liste
 Mon deuxième composant ++ - Etat d'occupation des salles
 --------------------------------------------------------
 
-  Créer un composant Bar* affichant l'état d'occupation d'un bar qui remplacera le bloc ```hoverable``` par le markup
+  Créer un composant `Bar` affichant l'état d'occupation d'un bar qui remplacera le bloc `hoverable` par le markup
   ```
   <div class="hoverable">
       <div class="bar-name-col">
@@ -83,7 +83,7 @@ Mon deuxième composant ++ - Etat d'occupation des salles
 Flux - Affichage depuis un store
 --------------------------------
 
-   Externaliser le chargement des bars dans un *BarStore* dédié.
+   Externaliser le chargement des bars dans un `BarStore` dédié.
    Vous pouvez utiliser :
      
    * [l'eventEmitter](http://nodejs.org/api/events.html) de node (```var EventEmitter = require('events').EventEmitter;```)
@@ -94,7 +94,7 @@ Flux - Affichage depuis un store
    Le principe d'utilisation du store est :
      
      1. Initialiser la liste des bars dans le store à vide
-     2. Le composant *Bars* écoute les changement de *BarStore* et met à jour son état
+     2. Le composant `Bars` écoute les changement de `BarStore` et met à jour son état
      3. l'appel JSON dans le store modifie la liste des bars et emet un evénement de changement
      4. N'oubliez pas de retirer l'écouteur à la destruction du composant
      
@@ -103,7 +103,7 @@ Flux - Modification en utilisant le store
 
 ### Création d'un formulaire
 
-   Créer un composant *PseudoForm* qui générera le markup suivant :
+   Créer un composant `PseudoForm` qui générera le markup suivant :
    ```
     <form>        
         <input type="text" placeholder="Pseudo" />
@@ -111,7 +111,7 @@ Flux - Modification en utilisant le store
     </form>
    ```
     
-   et intégrer ce composant dans le composant *Bars* en l'entourant de
+   et intégrer ce composant dans le composant `Bars` en l'entourant de
    ```
     <div class="right-part">
         <!-- ici votre composnt -->
@@ -122,26 +122,26 @@ Flux - Modification en utilisant le store
 
 ### Remplissage du formulaire depuis un click
 
-   Remplir le champ *input* du formulaire lorsque l'on clique sur une case de la liste avec le nom de l'occupant, s'il 
+   Remplir le champ `input` du formulaire lorsque l'on clique sur une case de la liste avec le nom de l'occupant, s'il 
    y en a un
    
    Hints : 
     
-* vous pouvez passer 2 fonctions en *props* du composant Bar, l'une permettant de modifier le producer, l'autre le consumer
+* vous pouvez passer 2 fonctions en `props` du composant `Bar`, l'une permettant de modifier le producer, l'autre le consumer
 * vous ne devez jamais modifier un état ou une property "par référence"
-* vous pouvez utiliser un attribut d'état supplémentaire dans *Bars* 
+* vous pouvez utiliser un attribut d'état supplémentaire dans `Bars` 
 
 ### Créer un dispatcher
 
-Pour pouvoir notifier le store que l'on souhaite modifier l'occupation des bars, il va etre nécessaire de créer un *Dispatcher*
+Pour pouvoir notifier le store que l'on souhaite modifier l'occupation des bars, il va etre nécessaire de créer un `Dispatcher`
 Il n'y en a qu'un par application.
 
-On pourra utiliser celui fournit par le package *flux*
+On pourra utiliser celui fournit par le package `flux`
 
 ### Créer une action
 
 La notification du dispatcher se fait par l'intermédiaire d'objet specifique action.
-Ici, on crééra *BarAction* contenant 1 fonction :
+Ici, on crééra `BarAction` contenant 1 fonction :
 
 ```updateBar``` qui prend en paramètre un bar, et notifie le dispatcher que l'on modifie ce bar.
       
@@ -156,9 +156,9 @@ Attention ; essayez dans le mesure du possible de continuer de traiter les bars 
 Ajouter un comportement ```onSubmit``` sur le formulaire de façon à pouvoir enregistrer les modifications.
 Pour récupérer la valeur de l'input, vous pouvez utiliser le [databinding](http://facebook.github.io/react/docs/two-way-binding-helpers.html)
 Pour initialiser l'état, vous pouvez utiliser ```componentWillReceiveProps```
-Vous pouvez passer la fonctions d'enregistrement en *props* de PseudoForm.
-Pour savoir quel est le nom que l'on change, il faut stocker une information supplémentaire dans l'état de *Bars*
-Pensez à continuer de traiter les bars comme s'ils étaient immutables : vous pouvez cloner un bar en utlisant ```_.clone``` de lodash
+Vous pouvez passer la fonctions d'enregistrement en `props` de PseudoForm.
+Pour savoir quel est le nom que l'on change, il faut stocker une information supplémentaire dans l'état de `Bars`
+Pensez à continuer de traiter les bars comme s'ils étaient immutables : vous pouvez cloner un bar en utlisant `_.clone` de lodash
 
   
   
