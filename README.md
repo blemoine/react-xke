@@ -21,7 +21,7 @@ Mon premier composant - Le header
   </header>
   ```
     
-    et qui devra être attaché à l'élemnt d'id *react*
+ et qui devra être attaché à l'élemnt d'id *react*
     
 Mon deuxième composant - Affichage d'une liste
 ----------------------------------------------
@@ -122,10 +122,9 @@ Flux - Modification en utilisant le store
 
 ### Remplissage du formulaire depuis un click
 
-   Remplir le champ `input` du formulaire lorsque l'on clique sur une case de la liste avec le nom de l'occupant, s'il 
-   y en a un
+ Remplir le champ `input` du formulaire lorsque l'on clique sur une case de la liste avec le nom de l'occupant, s'il y en a un
    
-   Hints : 
+ Hints : 
     
 * vous pouvez passer 2 fonctions en `props` du composant `Bar`, l'une permettant de modifier le producer, l'autre le consumer
 * vous ne devez jamais modifier un état ou une property "par référence"
@@ -148,16 +147,23 @@ Ici, on crééra `BarAction` contenant 1 fonction :
 ### Ecoute des actions par le store
 
 Le store doit écouter le dispatcher pour modifier sa liste de bars. 
+
 Une fois la liste de bars modifié, le store emet un évenement de changement sur lui-même.
+
 Attention ; essayez dans le mesure du possible de continuer de traiter les bars comme étant des objets immutables.
 
 ### Enregistrer la modif depuis le composant
 
 Ajouter un comportement ```onSubmit``` sur le formulaire de façon à pouvoir enregistrer les modifications.
+
 Pour récupérer la valeur de l'input, vous pouvez utiliser le [databinding](http://facebook.github.io/react/docs/two-way-binding-helpers.html)
+
 Pour initialiser l'état, vous pouvez utiliser ```componentWillReceiveProps```
+
 Vous pouvez passer la fonctions d'enregistrement en `props` de PseudoForm.
+
 Pour savoir quel est le nom que l'on change, il faut stocker une information supplémentaire dans l'état de `Bars`
+
 Pensez à continuer de traiter les bars comme s'ils étaient immutables : vous pouvez cloner un bar en utlisant `_.clone` de lodash
 
   
