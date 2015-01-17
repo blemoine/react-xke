@@ -3,6 +3,7 @@ var React = require('react');
 var Bar = require('./Bar.jsx');
 
 var BarStore = require('../stores/BarStore.js');
+var PseudoForm = require('./PseudoForm.jsx');
 
 var Bars = React.createClass({
     getInitialState: function () {
@@ -11,20 +12,25 @@ var Bars = React.createClass({
         }
     },
     componentDidMount: function () {
-        BarStore.on('change',this._reloadState);
+        BarStore.on('change', this._reloadState);
     },
     componentWillUnmount: function () {
         BarStore.removeListener('change', this._reloadState);
     },
 
-    _reloadState: function() {
+    _reloadState: function () {
         this.setState({bars: BarStore.getAll()})
     },
 
     render: function () {
-        return <div className="left-part">
-            <div>
+        return <div>
+            <div className="left-part">
+                <div>
             {this.state.bars.map(bar => <Bar bar={bar} key={bar.id} />)}
+                </div>
+            </div>
+            <div className="right-part">
+                <PseudoForm />
             </div>
         </div>
     }

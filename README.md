@@ -37,21 +37,21 @@ Mon deuxième composant - Affichage d'une liste
      ```
   Le markup attendu doit avoir la forme suivante :
   ```
-  <div className="left-part">
+  <div class="left-part">
       <div>
             <!-- Repetition commence ici -->
-           <div className="hoverable">
-                  <div className="bar-name-col">
+           <div class="hoverable">
+                  <div class="bar-name-col">
                       <span>BAR 1</span>
                   </div>
            </div>
-           <div className="hoverable">
-                 <div className="bar-name-col">
+           <div class="hoverable">
+                 <div class="bar-name-col">
                      <span>BAR 2</span>
                  </div>
           </div>
-          <div className="hoverable">
-                <div className="bar-name-col">
+          <div class="hoverable">
+                <div class="bar-name-col">
                     <span>BAR 3</span>
                 </div>
          </div>
@@ -80,8 +80,8 @@ Mon deuxième composant ++ - Etat d'occupation des salles
   </div>
   ```
 
-Flux - Le BarStore
-------------------
+Flux - Affichage depuis un store
+--------------------------------
 
    Externaliser le chargement des bars dans un *BarStore* dédié.
    Vous pouvez utiliser :
@@ -98,7 +98,33 @@ Flux - Le BarStore
      3. l'appel JSON dans le store modifie la liste des bars et emet un evénement de changement
      4. N'oubliez pas de retirer l'écouteur à la destruction du composant
      
+Flux - Modification en utilisant le store
+-----------------------------------------
 
+### Création d'un formulaire
+
+   Créer un composant *PseudoForm* qui générera le markup suivant :
+    ```
+    <form>        
+        <input type="text" placeholder="Pseudo" />
+        <input type="submit" value="Enregister" />
+    </form>
+    ```
+    
+    et intégrer ce composant dans le composant *Bars* en l'entourant de
+    ```
+    <div class="right-part">
+        <!-- ici votre composant -->
+    </div>
+    ```
+   
+
+
+### Remplissage du formulaire depuis un click
+### Créer un dispatcher
+### Créer une action
+### Ecoute des actions par le store
+### Ajout d'un bouton valider permettant d'enregistrer la modif
   
   
   
