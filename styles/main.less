@@ -33,14 +33,15 @@ header {
   display: inline-block;
   width: 25%;
   border: 1px solid black;
-  height: 30px;
+  height: 40px;
   vertical-align: top;
   text-align: center;
   box-sizing: border-box;
 
   span {
+    vertical-align: middle;
     display: inline-block;
-    padding: 6px 5px;
+    padding: 11px 5px;
   }
 }
 
@@ -50,13 +51,43 @@ header {
   text-align: right;
 }
 
+.producer-col, .consumer-col {
+  .col;
+
+  span {
+    padding: 7px 5px;
+  }
+
+  .occupied:before {
+    font-family: Flaticon;
+    font-size: 20px;
+    font-style: normal;
+    margin-left: 20px;
+
+    position: relative;
+    top: 3px;
+    margin-right: 10px;
+  }
+}
+
+.consumer-col .occupied:before {
+  content: "\e000";
+}
+
+.producer-col .occupied:before {
+  content: "\e001";
+}
+
 .hoverable {
-  .col, .bar-name-col {
+  .col, .producer-col, .consumer-col, .bar-name-col {
     transition: 0.3s;
   }
 
-  &:hover .col, &:hover .bar-name-col {
-    background-color: deeppink;
-    color: white;
+  &:hover {
+    .col, .producer-col, .consumer-col, .bar-name-col {
+      background-color: deeppink;
+      color: white;
+    }
   }
+
 }

@@ -59,3 +59,26 @@ Mon deuxième composant - Affichage d'une liste
       </div>
   </div>
   ```
+  
+Mon deuxième composant ++ - Etat d'occupation des salles
+--------------------------------------------------------
+
+  Créer un composant *Bar* affichant l'état d'occupation d'un bar qui remplacera le bloc ```hoverable``` par le markup
+  ```
+  <div class="hoverable">
+      <div class="bar-name-col">
+           <span>Nom du bar</span>
+       </div>
+      <div class="producer-col">
+          <!-- Si c'est occupé mettre le nom de l'occupant et la class occupied -->
+          <span class="occupied">Nom de l'occupant</span>
+      </div>
+      <div class="consumer-col">
+          <!-- Si c'est libre mettre juste un span vide avec la classe free -->
+          <span class="free"></span>      
+      </div>
+  </div>
+  ```
+  
+  
+  

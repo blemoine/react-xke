@@ -1,5 +1,6 @@
 var React = require('react');
 var $ = require('jquery');
+var Bar = require('./Bar.jsx');
 
 var Bars = React.createClass({
     getInitialState: function () {
@@ -13,13 +14,7 @@ var Bars = React.createClass({
     render: function () {
         return <div className="left-part">
             <div>
-            {this.state.bars.map(bar =>
-                <div className="hoverable" key={bar.id}>
-                    <div className="bar-name-col">
-                        <span>{bar.name}</span>
-                    </div>
-                </div>
-            )}
+            {this.state.bars.map(bar => <Bar bar={bar} key={bar.id} />)}
             </div>
         </div>
     }
