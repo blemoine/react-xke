@@ -126,11 +126,18 @@ Flux - Modification en utilisant le store
    y en a un
    
    Hints : 
+    
     * vous pouvez passer 2 fonctions en *props* du composant Bar, l'une permettant de modifier le producer, l'autre le consumer
     * vous ne devez jamais modifier un état ou une property "par référence"
     * vous pouvez utiliser un attribut d'état supplémentaire dans *Bars* 
 
 ### Créer un dispatcher
+
+    Pour pouvoir notifier le store que l'on souhaite modifier l'occupation des bars, il va etre nécessaire de créer un *Dispatcher*
+    Il n'y en a qu'un par application.
+    
+    On pourra utiliser celui fournit par le package *flux*
+
 ### Créer une action
 ### Ecoute des actions par le store
 ### Ajout d'un bouton valider permettant d'enregistrer la modif
