@@ -114,13 +114,22 @@ Flux - Modification en utilisant le store
     et intégrer ce composant dans le composant *Bars* en l'entourant de
     ```
     <div class="right-part">
-        <!-- ici votre composant -->
+        <!-- ici votre composnt -->
     </div>
     ```
    
 
 
 ### Remplissage du formulaire depuis un click
+
+   Remplir le champ *input* du formulaire lorsque l'on clique sur une case de la liste avec le nom de l'occupant, s'il 
+   y en a un
+   
+   Hints : 
+    * vous pouvez passer 2 fonctions en *props* du composant Bar, l'une permettant de modifier le producer, l'autre le consumer
+    * vous ne devez jamais modifier un état ou une property "par référence"
+    * vous pouvez utiliser un attribut d'état supplémentaire dans *Bars* 
+
 ### Créer un dispatcher
 ### Créer une action
 ### Ecoute des actions par le store

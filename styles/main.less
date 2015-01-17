@@ -58,6 +58,7 @@ header {
 
 .producer-col, .consumer-col {
   .col;
+  cursor:pointer;
 
   span {
     padding: 7px 5px;
@@ -76,11 +77,11 @@ header {
 }
 
 .consumer-col .occupied:before {
-  content: "\e000";
+  content: "\e001";
 }
 
 .producer-col .occupied:before {
-  content: "\e001";
+  content: "\e000";
 }
 
 .hoverable {
