@@ -14,12 +14,12 @@ Mon premier composant - Le header
 ---------------------------------
 
   Créer un composant *Header* simple qui contiendra le markup
-    ```
-    <header>
+  ```
+  <header>
         <h1>GHM</h1>    
         <h2></h2>
-    </header>
-    ```
+  </header>
+  ```
     
     et qui devra être attaché à l'élemnt d'id *react*
     
@@ -30,11 +30,11 @@ Mon deuxième composant - Affichage d'une liste
   
   La liste des bars doit faire parti de l'état du composant.
   Pour rappel, on pourra utiliser jquery de la façon suivante pour récupérer la liste des bars :
-     ```
+  ```
      $.getJSON('/bars').then(function (response) {
          var bars = response.bars;
      })
-     ```
+  ```
   Le markup attendu doit avoir la forme suivante :
   ```
   <div class="left-part">
@@ -104,19 +104,19 @@ Flux - Modification en utilisant le store
 ### Création d'un formulaire
 
    Créer un composant *PseudoForm* qui générera le markup suivant :
-    ```
+   ```
     <form>        
         <input type="text" placeholder="Pseudo" />
         <input type="submit" value="Enregister" />
     </form>
-    ```
+   ```
     
    et intégrer ce composant dans le composant *Bars* en l'entourant de
-    ```
+   ```
     <div class="right-part">
         <!-- ici votre composnt -->
     </div>
-    ```
+   ```
    
 
 
