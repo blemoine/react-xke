@@ -10,25 +10,43 @@ Démarrer le hand's on
   * démarrer l'application avec la commande ```npm start```. Les dépendances s'installeront d'elle-même
   * ouvrez un navigateur moderne et aller sur [http://localhost:3000](http://localhost:3000)
 
+Notes préliminaires
+-------------------
+
+### Browserify
+Ce hand's on s'appuie sur [browserify](http://browserify.org/), une préprocesseur permettant d'utiliser le système de module
+ commonJS y compris dans le navigateur.
+ 
+Par exemple, il suffit d'installer *jquery* par npm avec la commande `npm install --save jquery`, pour ensuite pouvoir l'utiliser
+en faisant `var $ = require('jquery');`
+
+### Console
+
+Nous vous encourageons à travailler ce TP avec la console de développement ouverte car React y affiche de nombreux messages informatifs.
+
+
 Mon premier composant - Le header
 ---------------------------------
 
- Créer un composant `Header` simple qui contiendra le markup
+ Créer un composant `Header` simple qui générera le markup
  ```
  <header>
-       <h1>GHM</h1>    
+       <h1></h1>    
        <h2></h2>
  </header>
  ```
     
- et qui devra être attaché à l'élemnt d'id `react`
+ et qui devra être attaché à l'élement d'id `react`
+ 
+ Pour un exemple de composant simple : (http://facebook.github.io/react/index.html#examples)
     
 Mon deuxième composant - Affichage d'une liste
 ----------------------------------------------
 
-  Créer un composant `Bars` affichant la liste des bars renvoyées par le serveur à l'adresse http://localhost:3000/bars
+  Créer un composant `Bars` affichant la liste des bars renvoyées par le serveur à l'adresse (http://localhost:3000/bars)
   
   La liste des bars doit faire parti de l'état du composant.
+  
   Pour rappel, on pourra utiliser jquery de la façon suivante pour récupérer la liste des bars :
   ```
   $.getJSON('/bars').then(function (response) {
@@ -60,10 +78,17 @@ Mon deuxième composant - Affichage d'une liste
   </div>
   ```
   
+  On trouvera dans les liens suivants :
+  
+  * un exemple d'utilisation de state : (http://facebook.github.io/react/index.html#timerExample)
+  * un exemple de génération d'une liste : (http://facebook.github.io/react/docs/multiple-components.html#dynamic-children)
+  
+  
 Mon deuxième composant ++ - Etat d'occupation des salles
 --------------------------------------------------------
 
-  Créer un composant `Bar` affichant l'état d'occupation d'un bar qui remplacera le bloc `hoverable` par le markup
+  Créer un composant `Bar` affichant l'état d'occupation d'un bar qui remplacera le bloc `hoverable` de `Bars` par le markup
+  
   ```
   <div class="hoverable">
       <div class="bar-name-col">
@@ -79,6 +104,11 @@ Mon deuxième composant ++ - Etat d'occupation des salles
       </div>
   </div>
   ```
+  
+  On utilisera ici une `props` `bar` sur le composant `Bar` pour passer les informations nécessaires au composant.
+  Il est bon de prendre l'habitude de valider les `props` du composant.
+  Ici un exemple de comment faire la validation : (http://facebook.github.io/react/docs/reusable-components.html)
+  
 
 Flux - Affichage depuis un store
 --------------------------------
