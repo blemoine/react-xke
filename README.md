@@ -24,6 +24,14 @@ en faisant `var $ = require('jquery');`
 
 Nous vous encourageons à travailler ce TP avec la console de développement ouverte car React y affiche de nombreux messages informatifs.
 
+### Ecmascript 6
+
+Vous pouvez dans ce TP utiliser la syntaxe EcmaScript 6 supporté par React.
+
+### Séparation en fichier
+
+Afin d'être au plus proche du monde réel, vous êtes invités à séparer vos composants, stores, action, etc. dans un fichier à chaque fois.
+Les composants doivent avoir l'extension *.jsx* mais les autres fichier peuvent (doivent) porter l'extension *.js* 
 
 Mon premier composant - Le header
 ---------------------------------
@@ -114,19 +122,21 @@ Flux - Affichage depuis un store
 --------------------------------
 
    Externaliser le chargement des bars dans un `BarStore` dédié.
+   
    Vous pouvez utiliser :
      
    * [l'eventEmitter](http://nodejs.org/api/events.html) de node (```var EventEmitter = require('events').EventEmitter;```)
-   * ```_.assign``` de lodash pour "étendre" l'eventEmitter 
-   
-   
+   * ```_.assign``` de lodash pour "étendre" l'eventEmitter. Cette fonction fournit l'équivalent de [Object.assign](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/assign)
    
    Le principe d'utilisation du store est :
      
-     1. Initialiser la liste des bars dans le store à vide
-     2. Le composant `Bars` écoute les changement de `BarStore` et met à jour son état
-     3. l'appel JSON dans le store modifie la liste des bars et emet un evénement de changement
-     4. N'oubliez pas de retirer l'écouteur à la destruction du composant
+   1. Initialiser la liste des bars dans le store à vide
+   2. Le composant `Bars` écoute les changement de `BarStore` et met à jour son état
+   3. l'appel JSON dans le store modifie la liste des bars et emet un evénement de changement
+   4. N'oubliez pas de retirer l'écouteur à la destruction du composant
+   
+   
+   Un exemple de store peut être trouvé ici : (https://github.com/facebook/flux/blob/master/examples/flux-todomvc/js/stores/TodoStore.js) 
      
 Flux - Modification en utilisant le store
 -----------------------------------------
@@ -137,7 +147,7 @@ Flux - Modification en utilisant le store
    ```
     <form>        
         <input type="text" placeholder="Pseudo" />
-        <input type="submit" value="Enregister" />
+        <input type="submit" value="Enregistrer" />
     </form>
    ```
     
@@ -160,25 +170,28 @@ Flux - Modification en utilisant le store
 
 ### Créer un dispatcher
 
-Pour pouvoir notifier le store que l'on souhaite modifier l'occupation des bars, il va etre nécessaire de créer un `Dispatcher`
+Pour pouvoir notifier le store que l'on souhaite modifier l'occupation des bars, il va être nécessaire de créer un `Dispatcher`
 Il n'y en a qu'un par application.
 
 On pourra utiliser celui fournit par le package `flux`
 
+Exemple de dispatcher : (https://github.com/facebook/flux/blob/master/examples/flux-todomvc/js/dispatcher/AppDispatcher.js)
+
 ### Créer une action
 
-La notification du dispatcher se fait par l'intermédiaire d'objet specifique action.
-Ici, on crééra `BarAction` contenant 1 fonction :
-
-```updateBar``` qui prend en paramètre un bar, et notifie le dispatcher que l'on modifie ce bar.
+La notification du dispatcher se fait par l'intermédiaire d'objet specifique *Action*.
+Ici, on crééra `BarAction` contenant une fonction ```updateBar``` qui prend en paramètre un bar, 
+et notifie le dispatcher que l'on modifie ce bar.
+      
+Exemple d'Actions : (https://github.com/facebook/flux/blob/master/examples/flux-todomvc/js/actions/TodoActions.js)      
       
 ### Ecoute des actions par le store
 
 Le store doit écouter le dispatcher pour modifier sa liste de bars. 
 
-Une fois la liste de bars modifié, le store emet un évenement de changement sur lui-même.
+Une fois la liste de bars modifiée, le store emet un évenement de changement.
 
-Attention ; essayez dans le mesure du possible de continuer de traiter les bars comme étant des objets immutables.
+Attention : essayez dans le mesure du possible de continuer de traiter les bars comme étant des objets immutables.
 
 ### Enregistrer la modif depuis le composant
 
@@ -188,7 +201,7 @@ Pour récupérer la valeur de l'input, vous pouvez utiliser le [databinding](htt
 
 Pour initialiser l'état, vous pouvez utiliser ```componentWillReceiveProps```
 
-Vous pouvez passer la fonctions d'enregistrement en `props` de PseudoForm.
+Vous pouvez passer la fonctions d'enregistrement en `props` de `PseudoForm`.
 
 Pour savoir quel est le nom que l'on change, il faut stocker une information supplémentaire dans l'état de `Bars`
 
