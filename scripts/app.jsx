@@ -1,5 +1,5 @@
 var React = require('react');
 var Header = require('./components/Header.jsx');
+var Bars = require('./components/Bars.jsx');
 
-
-React.render(<Header />, document.getElementById('react'));
+React.render(<div><Header /><Bars /></div>, document.getElementById('react'));
