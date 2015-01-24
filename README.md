@@ -61,6 +61,17 @@ Mon deuxième composant - Affichage d'une liste
      var bars = response.bars;
   })
   ```
+  
+  Le format d'un objet `bar` est :
+   ```
+   {
+   consumer: "nom du consommateur",
+   id: 3,
+   name: "Le Network",
+   producer: "nom du producteur
+   }
+   ```
+  
   Le markup attendu doit avoir la forme suivante :
   ```
   <div class="left-part">

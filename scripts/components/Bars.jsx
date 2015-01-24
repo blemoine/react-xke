@@ -1,30 +1,25 @@
 var React = require('react');
 var $ = require('jquery');
+var Bar = require('./Bar.jsx');
 
 var Bars = React.createClass({
 
-    getInitialState: function() {
+    getInitialState: function () {
         return {
-            bars:[]
+            bars: []
         }
     },
-    componentDidMount: function() {
+    componentDidMount: function () {
         $.getJSON('/bars').then((response) => {
-            this.setState({bars:response.bars});
+            this.setState({bars: response.bars});
         })
     },
     render: function () {
         return <div className="left-part">
             <div>
-            {this.state.bars.map((bar) =>
-                <div className="hoverable">
-                    <div className="bar-name-col">
-                        <span>{bar.name}</span>
-                    </div>
-                </div>
+            {this.state.bars.map(bar =>
+                    <Bar bar={bar} />
             )}
-
-
             </div>
         </div>
     }
