@@ -190,7 +190,7 @@ Exemple de dispatcher : (https://github.com/facebook/flux/blob/master/examples/f
 
 ### Créer une action
 
-La notification du dispatcher se fait par l'intermédiaire d'objet specifique *Action*.
+La notification du dispatcher se fait par l'intermédiaire d'objet spécifique *Action*.
 Ici, on crééra `BarAction` contenant une fonction ```updateBar``` qui prend en paramètre un bar, 
 et notifie le dispatcher que l'on modifie ce bar.
       
