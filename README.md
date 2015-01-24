@@ -165,7 +165,7 @@ Flux - Modification en utilisant le store
    et intégrer ce composant dans le composant `Bars` en l'entourant de
    ```
     <div class="right-part">
-        <!-- ici votre composnt -->
+        <!-- ici votre composant PseudoForm-->
     </div>
    ```
 
