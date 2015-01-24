@@ -307,12 +307,12 @@ function create(text) {
   _todos[id] = {id: id, text: text };
 }
 
-var TodoStore = _.assign({}, EventEmitter.prototype, {
+var TodoStore = _.assign( {
   getAll: function() { return _todos; },
   emitChange: function() { this.emit(CHANGE_EVENT); },
   addChangeListener: function(callback) { this.on(CHANGE_EVENT, callback); },
   removeChangeListener: function(callback) { this.removeListener(CHANGE_EVENT, callback); }
-});
+}, EventEmitter.prototype);
 
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
