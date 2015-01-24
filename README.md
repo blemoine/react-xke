@@ -36,7 +36,7 @@ Les composants doivent avoir l'extension *.jsx* mais les autres fichier peuvent 
 Mon premier composant - Le header
 ---------------------------------
 
- Créer un composant `Header` simple qui générera le markup
+ Créer un composant `Header`, dans son propre fichier *Header.jsx* simple qui générera le markup
  ```
  <header>
        <h1></h1>    
