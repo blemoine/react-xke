@@ -204,20 +204,24 @@ Une fois la liste de bars modifiée, le store emet un évenement de changement.
 
 Attention : essayez dans le mesure du possible de continuer de traiter les bars comme étant des objets immutables.
 
+Un exemple de store peut être trouvé ici : (http://blemoine.github.io/react-xke/#/18/3)
+
 ### Enregistrer la modif depuis le composant
 
 Ajouter un comportement ```onSubmit``` sur le formulaire de façon à pouvoir enregistrer les modifications.
 
 Pour récupérer la valeur de l'input, vous pouvez utiliser le [databinding](http://facebook.github.io/react/docs/two-way-binding-helpers.html)
 
+Pour utiliser les addons, pensez à ajouter ```require('react-addons')```
+
 Pour initialiser l'état, vous pouvez utiliser ```componentWillReceiveProps```
 
-Vous pouvez passer la fonctions d'enregistrement en `props` de `PseudoForm`.
+Vous pouvez passer la fonction d'enregistrement en `props` de `PseudoForm`.
 
 Pour savoir quel est le nom que l'on change, il faut stocker une information supplémentaire dans l'état de `Bars`
 
 Pensez à continuer de traiter les bars comme s'ils étaient immutables : vous pouvez cloner un bar en utlisant `_.clone` de lodash
 
-  
+Pensez à vider le formulaire après soumission.
   
   
