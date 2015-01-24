@@ -8,7 +8,8 @@ var Bars = React.createClass({
 
     getInitialState: function () {
         return {
-            bars: []
+            bars: [],
+            currentSelectedName:null
         }
     },
     componentDidMount: function () {
@@ -25,12 +26,16 @@ var Bars = React.createClass({
             <div className="left-part">
                 <div>
             {this.state.bars.map(bar =>
-                    <Bar key={bar.name} bar={bar} />
+                    <Bar key={bar.name}
+                        bar={bar}
+                        selectProducer={() => this.setState({currentSelectedName:bar.producer})}
+                        selectConsumer={() => this.setState({currentSelectedName:bar.consumer})}
+                        />
             )}
                 </div>
             </div>
             <div className="right-part">
-                <PseudoForm />
+                <PseudoForm name={this.state.currentSelectedName} />
             </div>
         </div>
     }

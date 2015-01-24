@@ -177,7 +177,7 @@ Flux - Modification en utilisant le store
     
 * vous pouvez passer 2 fonctions en `props` du composant `Bar`, l'une permettant de modifier le producer, l'autre le consumer
 * vous ne devez jamais modifier un état ou une property "par référence"
-* vous pouvez utiliser un attribut d'état supplémentaire dans `Bars` 
+* vous pouvez utiliser un attribut d'état supplémentaire dans `Bars`, représentant le nom actuellement sélectionné.
 
 ### Créer un dispatcher
 
