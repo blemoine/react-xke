@@ -143,11 +143,11 @@ Flux - Affichage depuis un store
      
    1. Initialiser la liste des bars dans le store à vide
    2. Le composant `Bars` écoute les changement de `BarStore` et met à jour son état
-   3. l'appel JSON dans le store modifie la liste des bars et emet un evénement de changement
-   4. N'oubliez pas de retirer l'écouteur à la destruction du composant
+   3. l'appel JSON dans le store modifie la liste des bars du store et emet un evénement de changement
+   4. N'oubliez pas de retirer l'écouteur à la destruction du composant   
    
    
-   Un exemple de store peut être trouvé ici : (https://github.com/facebook/flux/blob/master/examples/flux-todomvc/js/stores/TodoStore.js) 
+   Un exemple de store peut être trouvé ici : (http://blemoine.github.io/react-xke/#/18/3) 
      
 Flux - Modification en utilisant le store
 -----------------------------------------

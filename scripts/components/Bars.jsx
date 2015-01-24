@@ -1,6 +1,7 @@
 var React = require('react');
-var $ = require('jquery');
+
 var Bar = require('./Bar.jsx');
+var BarStore = require('../stores/BarStore');
 
 var Bars = React.createClass({
 
@@ -10,15 +11,19 @@ var Bars = React.createClass({
         }
     },
     componentDidMount: function () {
-        $.getJSON('/bars').then((response) => {
-            this.setState({bars: response.bars});
-        })
+        BarStore.on('change', this._barsChanged);
+    },
+    componentWillUnmount: function () {
+        BarStore.removeListener('change', this._barsChanged);
+    },
+    _barsChanged: function (bar) {
+        this.setState({bars: BarStore.getAll()});
     },
     render: function () {
         return <div className="left-part">
             <div>
             {this.state.bars.map(bar =>
-                    <Bar bar={bar} />
+                    <Bar key={bar.name} bar={bar} />
             )}
             </div>
         </div>
