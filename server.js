@@ -4,7 +4,7 @@ var lessMiddleware = require('less-middleware');
 
 var app = express();
 
-var packages = ['jquery', 'react', 'lodash', 'flux'];
+var packages = ['jquery', 'react', 'lodash', 'flux', 'events', 'react-addons'];
 
 app.get('/js/lib.js', browserify(packages, {
     cache: true,
