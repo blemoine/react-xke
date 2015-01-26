@@ -33,8 +33,9 @@ Vous pouvez dans ce TP utiliser la syntaxe EcmaScript 6 supporté par React.
 Afin d'être au plus proche du monde réel, vous êtes invités à séparer vos composants, stores, action, etc. dans un fichier à chaque fois.
 Les composants doivent avoir l'extension *.jsx* mais les autres fichier peuvent (doivent) porter l'extension *.js* 
 
-Mon premier composant - Le header
+1) Mon premier composant - Le header
 ---------------------------------
+*Branche GIT 'step-one'*
 
  Créer un composant `Header`, dans son propre fichier *Header.jsx* simple qui générera le markup
  ```
@@ -48,8 +49,9 @@ Mon premier composant - Le header
  
  Pour un exemple de composant simple : (http://facebook.github.io/react/index.html#examples)
     
-Mon deuxième composant - Affichage d'une liste
+2) Mon deuxième composant - Affichage d'une liste
 ----------------------------------------------
+*Branche GIT 'step-two'*
 
   Créer un composant `Bars` affichant la liste des bars renvoyées par le serveur à l'adresse (http://localhost:3000/bars)
   
@@ -103,8 +105,9 @@ Mon deuxième composant - Affichage d'une liste
   * un exemple de génération d'une liste : (http://facebook.github.io/react/docs/multiple-components.html#dynamic-children)
   
   
-Mon deuxième composant ++ - Etat d'occupation des salles
+3) Mon deuxième composant ++ - Etat d'occupation des salles
 --------------------------------------------------------
+*Branche GIT 'step-three'*
 
   Créer un composant `Bar` affichant l'état d'occupation d'un bar qui remplacera le bloc `hoverable` de `Bars` par le markup
   
@@ -129,8 +132,9 @@ Mon deuxième composant ++ - Etat d'occupation des salles
   Ici un exemple de comment faire la validation : (http://facebook.github.io/react/docs/reusable-components.html)
   
 
-Flux - Affichage depuis un store
+4) Flux - Affichage depuis un store
 --------------------------------
+*Branche GIT 'step-four'*
 
    Externaliser le chargement des bars dans un `BarStore` dédié.
    
@@ -149,8 +153,9 @@ Flux - Affichage depuis un store
    
    Un exemple de store peut être trouvé ici : (http://blemoine.github.io/react-xke/#/18/3) 
      
-Flux - Modification en utilisant le store
+5) Flux - Modification en utilisant le store
 -----------------------------------------
+*Branche GIT 'step-five'*
 
 ### Création d'un formulaire
 
