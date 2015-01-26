@@ -44,7 +44,7 @@ Mon premier composant - Le header
  </header>
  ```
     
- et qui devra être attaché à l'élement d'id `react`
+ et qui devra être attaché à l'élement HTML avec l'id `react`
  
  Pour un exemple de composant simple : (http://facebook.github.io/react/index.html#examples)
     
