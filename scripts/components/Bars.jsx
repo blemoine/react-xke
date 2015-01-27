@@ -7,9 +7,7 @@ var Bars = React.createClass({
 
   getInitialState: function () {
     return {
-      bars: [],
-      currentSelectedBar: null,
-      currentSelectedAttribute: null
+      bars: []
     }
   },
   componentDidMount: function () {
