@@ -6,12 +6,16 @@ Démarrer le hand's on
 
   * Si vous n'avez pas git, installez git.
   * Si vous n'avez pas node, installez node. Avec nvm (https://github.com/creationix/nvm)
-  * récupérer le projet sur ```git clone https://github.com/blemoine/react-xke.git```
-  * démarrer l'application avec la commande ```npm start```. Les dépendances s'installeront d'elle-même
-  * ouvrez un navigateur moderne et aller sur [http://localhost:3000](http://localhost:3000)
+  * Récupérer le projet sur ```git clone https://github.com/blemoine/react-xke.git```
+  * Démarrer sur la branch ```step-one```
+  * Démarrer l'application avec la commande ```npm start```. Les dépendances s'installeront d'elle-même
+  * Ouvrez un navigateur moderne et aller sur [http://localhost:3000](http://localhost:3000)
 
 Notes préliminaires
 -------------------
+
+### server.js et index.html
+Ces deux fichiers ne sont pas à modifier durant ce hand's on.
 
 ### Browserify
 Ce hand's on s'appuie sur [browserify](http://browserify.org/), une préprocesseur permettant d'utiliser le système de module
@@ -109,7 +113,7 @@ Les composants doivent avoir l'extension *.jsx* mais les autres fichier peuvent 
 --------------------------------------------------------
 *Branche GIT 'step-three'*
 
-  Créer un composant `Bar` affichant l'état d'occupation d'un bar qui remplacera le bloc `hoverable` de `Bars` par le markup
+  Créer un composant `Bar` affichant l'état d'occupation d'un bar qui remplacera le bloc contenant la class `hoverable` de `Bars` par le markup
   
   ```
   <div class="hoverable">
