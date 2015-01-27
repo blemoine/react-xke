@@ -1,9 +1,9 @@
 var React = require('react');
-var $ = require('jquery');
 
 var _ = require('lodash');
 
 var Bar = require('./Bar.jsx');
+var BarStore = require('../stores/BarStore');
 
 var Bars = React.createClass({
 
@@ -13,10 +13,13 @@ var Bars = React.createClass({
     }
   },
   componentDidMount: function () {
-    var self = this;
-    $.getJSON('/bars').then(function (response) {
-      self.setState({bars: response.bars});
-    });
+    BarStore.on('change', this._barsChanged);
+  },
+  componentWillUnmount: function () {
+    BarStore.removeListener('change', this._barsChanged);
+  },
+  _barsChanged: function (bar) {
+    this.setState({bars: BarStore.getAll()});
   },
   render: function () {
     return <div>
