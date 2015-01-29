@@ -156,6 +156,7 @@ Les composants doivent avoir l'extension *.jsx* mais les autres fichier peuvent 
    
    
    Un exemple de store peut être trouvé ici : (http://blemoine.github.io/react-xke/#/18/3) 
+   Ne pas tenir compte de la partie `Dispatcher`, on verra ça plus bas.
      
 5) Flux - Modification en utilisant le store
 -----------------------------------------
@@ -180,12 +181,12 @@ Les composants doivent avoir l'extension *.jsx* mais les autres fichier peuvent 
 
 ### Remplissage du formulaire depuis un click
 
- Remplir le champ `input` du formulaire lorsque l'on clique sur une case de la liste avec le nom de l'occupant, s'il y en a un
+ Remplir le champ `input` du formulaire lorsque l'on clique sur une case de la liste avec le nom de l'occupant, s'il y en a un.
    
  Hints : 
     
 * vous pouvez passer 2 fonctions en `props` du composant `Bar`, l'une permettant de modifier le producer, l'autre le consumer
-* vous ne devez jamais modifier un état ou une property "par référence"
+* vous ne devez jamais modifier un état ou une property "par référence" (n'oubliez pas les fonctions setState/replaceState)
 * vous pouvez utiliser un attribut d'état supplémentaire dans `Bars`, représentant le nom actuellement sélectionné.
 
 ### Créer un dispatcher
