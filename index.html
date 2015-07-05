@@ -45,21 +45,15 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>La stack Facebook</h1>
-				</section>
-
-				<section>
-					<h1>React</h1>							
+					<h1>React - Flux</h1>							
 				</section>
 
 				<section>
 					<h2>React n'est pas un framework MVC</h2>		
-					<h3>(C'est une librairie)</h3>
 				</section>
 
 				<section>
 					<h2>React est orientée composant</h2>
-					<h3>(Mais pas du Web Componant)</h3>
 					 <aside class="notes">
 					 	<ul>
 					 		<li>Les composants sont réutilisables</li>
@@ -76,15 +70,6 @@
 							<li>Utilisation du virtualDOM pour les diff</li>
 						</ul>
 					</aside>					
-				</section>
-
-				<section>
-					<h2>React marche sur IE 8 et sur mobile</h2>
-					<ul>
-						<li class="fragment">N'est pas un polyfill</li>
-						<li class="fragment">Performances très élévées</li>
-					</ul>
-					
 				</section>
 
 				<section>
@@ -116,6 +101,19 @@ React.render(&lt;HelloMessage name="World" /&gt;,
 					</code></pre>
 					</section>
 					<section>
+					<h2>Syntaxe alternative</h2>
+					<pre><code>
+class HelloMessage {
+  render() {
+    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+  }
+}
+
+React.render(&lt;HelloMessage name="World" /&gt;,
+		document.getElementById('monId'));
+</code></pre>
+					</section>
+					<section>
 						<h2>Sans JSX</h2>
 						<pre><code>
 var HelloMessage = React.createClass({
@@ -132,23 +130,10 @@ React.render(React.createElement(HelloMessage, {name: "World"}),
 				</section>
 
 				<section>
-					<h2>Le cycle de vie d'un composant</h2>
+					<h2>Etat</h2>
 					<ul>
-						<li>componentWillMount</li>						
-						<li>componentDidMount</li>
-						<li>componentWillUpdate</li>
-						<li>componentDidUpdate</li>
-						<li>componentWillUnmount</li>
-					</ul>
-				</section>
-
-
-				<section>
-					<h2>Modifier l'état</h2>
-					<ul>
-						<li>setState</li>
-						<li>replaceState</li>
-						<li>forceUpdate</li>
+						<li>State</li>
+						<li>Props</li>
 					</ul>					
 				</section>
 
@@ -236,11 +221,13 @@ React.renderComponent(&lt;HelloMessage name="world" /&gt;, mountNode);
 						Browserify
 					</aside>
 				</section>
-
+				
 				<section>
-					<h2>Hand's on</h2>
-					<h3>https://github.com/blemoine/react-xke</h3>
-					<h3>git checkout step-one</h3>
+					<h2>React Native</h2>
+				</section>
+		
+				<section>
+					<h2>Virtual DOM</h2>
 				</section>
 
 				<section>
@@ -355,70 +342,48 @@ module.exports = TodoApp;
 				</section>
 
 				<section>
-					<h2>Hand's on</h2>
+				<h2>Une application React</h2>
+				<ul>
+					<li>React...</li>
+					<li class="fragment">un router</li>
+					<li class="fragment">une architecture</li>
+				</ul>
 				</section>
 
 				<section>
-					<h1>Conclusion</h1>					
+				<h2>Les routeurs</h2>
+				<ul>
+					<li class="fragment">React Router</li>
+					<li class="fragment">Director</li>
+					<li class="fragment">Backbone router, aviator, YARR, etc.</li>
+				</ul>
 				</section>
 
 				<section>
-					<h2>Flow</h2>
-					<aside class="notes">
-						<ul>
-							<li>Ecrit en OCaml</li>
-							<li>Lent</li>							
-						</ul>
-					</aside>									
-				</section>
-
-				<section>
-					<h2>Les limites de React</h2>
-					<ul>
-						<li>Le partage d'état entre composant</li>
-						<li>La verbosité</li>
-						<li>N'est pas un framework...</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Les limites de Flux</h2>
-					<ul>
-						<li>Le dispatcher uniquer</li>
-						<li>Les dépendances entre store</li>
-
-					</ul>
-					<aside class="notes">
-						Reflux
-					</aside>
+				<h2>Les implémentations de Flux</h2>
+				<ul>
+					<li class="fragment">Reflux</li>
+					<li class="fragment">Redux</li>
+					<li class="fragment">Fluxible, Relay, fluxxor, etc. </li>
+				</ul>
 				</section>
 
 
 				<section>
-					<h2>L'avenir</h2>
-					<ul>
-						<li>Composant autonome avec le CSS en JS</li>
-						<li>Compilateur Flow en JS</li>
-					</ul>
-					
+				<h2>Conclusion</h2>
+				<ul>
+					<li>Performant</li>
+					<li>Multiplateforme</li>
+					<li>Facile à debugger</li>
+					<li>Mais verbeux</li>
+				</ul>
 				</section>
-				
 				<section>
-					<h2>React 0.13</h2>
-					<pre><code>class Counter extends React.Component {
-  static propTypes = { initialCount: React.PropTypes.number };
-  static defaultProps = { initialCount: 0 };
-  state = { count: this.props.initialCount };
-  tick() { this.setState({ count: this.state.count + 1 });}
-  render() {
-    return (<div onClick={this.tick.bind(this)}>
-        Clicks: {this.state.count}
-      </div>);
-  }
-}
-					</code></pre>
+					<h2>Questions</h2>
 				</section>
-				
+
+
+
 
 			</div>
 
