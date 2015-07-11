@@ -71,6 +71,10 @@
 						</ul>
 					</aside>					
 				</section>
+				
+				<section>
+					<h2>React est performant<sup>*</sup></h2>
+				</section>
 
 				<section>
 					<h2>React utilise JSX</h2>
@@ -143,14 +147,14 @@ React.render(React.createElement(HelloMessage, {name: "World"}),
   getInitialState: function() {
     return {secondsElapsed: 0};
   },
-  tick: function() {
-    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
-  },
   componentDidMount: function() {
-    this.interval = setInterval(this.tick, 1000);
+    this.interval = setInterval(this._tick, 1000);
   },
   componentWillUnmount: function() {
     clearInterval(this.interval);
+  },
+  _tick: function() {
+    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
   },
   render: function() {
     return &lt;div&gt;Seconds: {this.state.secondsElapsed}&lt;/div&gt;
@@ -222,13 +226,15 @@ React.renderComponent(&lt;HelloMessage name="world" /&gt;, mountNode);
 					</aside>
 				</section>
 				
+				
 				<section>
 					<h2>React Native</h2>
+					<ul>
+						<li>Sur iOS</li>
+						<li>Sur androïd dans un futur proche</li>
+					</ul>
 				</section>
 		
-				<section>
-					<h2>Virtual DOM</h2>
-				</section>
 
 				<section>
 					<h1>Flux</h1>					
