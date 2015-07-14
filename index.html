@@ -229,10 +229,22 @@ React.renderComponent(&lt;HelloMessage name="world" /&gt;, mountNode);
 				
 				<section>
 					<h2>React Native</h2>
-					<ul>
-						<li>Sur iOS</li>
-						<li>Sur androïd dans un futur proche</li>
-					</ul>
+<pre><code>
+var React = require('react-native');
+var { TabBarIOS, NavigatorIOS } = React;
+
+var App = React.createClass({
+  render: function() {
+    return (
+      &lt;TabBarIOS>
+        &lt;TabBarIOS.Item title="React Native" selected={true}>
+          &lt;NavigatorIOS initialRoute={{ title: 'React Native' }} />
+        &lt;/TabBarIOS.Item>
+      &lt;/TabBarIOS>
+    );
+  },
+});
+</code></pre>
 				</section>
 		
 
@@ -381,7 +393,8 @@ module.exports = TodoApp;
 					<li>Performant</li>
 					<li>Multiplateforme</li>
 					<li>Facile à debugger</li>
-					<li>Mais verbeux</li>
+					<li>verbeux</li>
+					<li>difficile à tester</li>
 				</ul>
 				</section>
 				<section>
